@@ -45,88 +45,14 @@
     <header id="top" class="header">
         <div class="text-center" >
             <h1 class="display-1">NYC<span id="act">Act</span></b></h1>
-        
 
         </div>
-        <div align="center" id="map"></div>
+    
     </header>
 
-    <script>
-
-// This example adds a search box to a map, using the Google Place Autocomplete
-// feature. People can enter geographical searches. The search box will return a
-// pick list containing a mix of places and predicted search terms.
-
-function initAutocomplete() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -33.8688, lng: 151.2195},
-    zoom: 13,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-
-  // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });
-
-  var markers = [];
-  // [START region_getplaces]
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
-  searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
-
-    if (places.length == 0) {
-      return;
-    }
-
-    // Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
-
-    // For each place, get the icon, name and location.
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
-
-      // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location
-      }));
-
-      if (place.geometry.viewport) {
-        // Only geocodes have viewport.
-        bounds.union(place.geometry.viewport);
-      } else {
-        bounds.extend(place.geometry.location);
-      }
-    });
-    map.fitBounds(bounds);
-  });
-  // [END region_getplaces]
-}
-
+    <center><h2>Organizing near you.</h2></center>
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANXMr6O8g1p5MBCV0kA1Hhe2vy-xVz3cw&callback=initMap"
-         async defer></script>
-
 
 
 <!--Meredith's Stuff !-->
@@ -156,6 +82,17 @@ h1{
     font-family: 'Roboto', sans-serif;
     margin:0;
 }
+h2{
+    position:absolute;
+     left: 0;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    top: 50%;
+    width: 100%;
+    top:30%;
+    font-family: 'Roboto', sans-serif;
+}
 
 #act{
      font-family: 'Biryani', sans-serif;
@@ -165,7 +102,6 @@ h1{
 #galleryContainer {
   width: 80%;
   height: 45%;        /* Image height + 200px */
-  overflow: hidden;
   position: absolute;
   top: 30%;
   left:20%;
@@ -399,47 +335,13 @@ h1{
 
 #div1{
   display:none;
-  position:absolute;
+  position:fixed;
   color:black;
-  left:110px;
-  font-size:50px;
-}
+  left:120px;
+  font-size:40px;
+  top:90%;
+  left:47%;
 
-#div2{
-  display:none;
-  position:absolute;
-  height:300px;
-  width:300px;
-  background-color:lightgray;
-  opacity:.8;
-  left:610px;
-}
-#div3{
-  display:none;
-  position:absolute;
-  height:300px;
-  width:300px;
-  background-color:lightgray;
-  opacity:.8;
-  left:1110px;
-}
-#div4{
-  display:none;
-  position:absolute;
-  height:300px;
-  width:300px;
-  background-color:lightgray;
-  opacity:.8;
-  left:1610px;
-}
-#div5{
-  display:none;
-  position:absolute;
-  height:300px;
-  width:300px;
-  background-color:lightgray;
-  opacity:.8;
-  left:2110px;
 }
 
 p{
@@ -751,6 +653,8 @@ function setButtonStates() {
 
 }
 
+
+
 // Attach mouseenter and mouseleave event handlers to the current slide to fade the caption in and out
 // However, if the device supports touch events then fade the caption in/out when the slide is touched
 
@@ -784,6 +688,8 @@ function fadeOutLoadingMessage(){
 }
 
 
+
+
 </script>
 
 
@@ -793,21 +699,31 @@ function fadeOutLoadingMessage(){
   <button id="rightButton" onclick='moveRight()'>&gt;</button>
   <div id="galleryContainer">
     <div id="gallery">
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p>Hello</p></div><img src="slides/BarbedWire.jpg" alt="Barbed Wire" /></div>
-      <div onmouseover="document.getElementById('div2').style.display = 'block';" onmouseout="document.getElementById('div2').style.display = 'none';"><div id = "div2"><p>Hello</p></div><img src="slides/Feather.jpg" alt="Feather" /></div>
-      <div onmouseover="document.getElementById('div3').style.display = 'block';" onmouseout="document.getElementById('div3').style.display = 'none';"><div id = "div3"><p>Hello</p></div><img src="slides/DriftStuff.jpg" alt="Drift Stuff" /></div>
-      <div onmouseover="document.getElementById('div4').style.display = 'block';" onmouseout="document.getElementById('div4').style.display = 'none';"><div id = "div4"><p>Hello</p></div><img src="slides/Driftwood.jpg" alt="Driftwood" /></div>
-      <img src="slides/DriftwoodGuy.jpg" alt="Driftwood and Guy" />
-      <img src="slides/GrassLight.jpg" alt="Grass and Light" />
-      <img src="slides/PebbleAndShells.jpg" alt="Pebble and Shells" />
-      <img src="slides/StickSea.jpg" alt="Stick and Sea" />
-      <img src="slides/SeaweedGasmask.jpg" alt="Seaweed Gasmask" />
-      <img src="slides/Surfers.jpg" alt="Surfers" />
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p>Location</p></div><img src="slides/BarbedWire.jpg" alt="Barbed Wire" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Feather.jpg" alt="Feather" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/DriftStuff.jpg" alt="Drift Stuff" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Driftwood.jpg" alt="Driftwood" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/DriftwoodGuy.jpg" alt="Driftwood and Guy" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/GrassLight.jpg" alt="Grass and Light" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/PebbleAndShells.jpg" alt="Pebble and Shells" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/StickSea.jpg" alt="Stick and Sea" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/SeaweedGasmask.jpg" alt="Seaweed Gasmask" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Surfers.jpg" alt="Surfers" /></div>
     </div>
     <div id="caption">Photo Caption</div>
     <div id="loading">Please wait...</div>
   </div>
 
+<script>
+function changeLocation(){
+    $('p').each(function(i){
+        document.getElementById('p').innerHTML = "hehe";
+    });
+}
+
+document.getElementById('#div1').innerHTML = "hehe";
+changeLocation();
+</script>
 
 </body>
 
