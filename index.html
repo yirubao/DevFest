@@ -30,7 +30,7 @@
                         <a href="index.html">Advanced Search</a>
                     </li>
                     <li>
-                        <a href="about.html">Log In</a>
+                        <a href="login.html">Log In</a>
                     </li>
                     
                 </ul>
@@ -688,17 +688,53 @@ function fadeOutLoadingMessage(){
 }
 
 
+</script> -->
+<script>
+myToken;
+function checkLoginState(){
+  FB.login(function(response) {
+  if (response.status === 'connected') {
+    // Logged into your app and Facebook.
+  myToken = FB.getAuthResponse().accessToken
+  } else if (response.status === 'not_authorized') {
+    // The person is logged into Facebook, but not your app.
+  FB.login()
+  } else {
+    // The person is not logged into Facebook, so we're not sure if
+    // they are logged into this app or not.
+  FB.login()
+  }
+});
+}
+function callPython(){
+var xmlhttp;
+if(window.XMLHttpRequest){
+  xmlhttp=new XMLHttpRequest();
 
+}
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("login-button").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET",myToken,true);
+xmlhttp.send();
+
+}
+</script>
 
 </script>
 
 
 
-
+  <button id="login-button" onclick='checkLoginState()'></button>
   <button id="leftButton" onclick='moveLeft()'>&lt;</button>
   <button id="rightButton" onclick='moveRight()'>&gt;</button>
   <div id="galleryContainer">
     <div id="gallery">
+    <!--
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p>Location</p></div><img src="slides/BarbedWire.jpg" alt="Barbed Wire" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Feather.jpg" alt="Feather" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/DriftStuff.jpg" alt="Drift Stuff" /></div>
@@ -708,7 +744,11 @@ function fadeOutLoadingMessage(){
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/PebbleAndShells.jpg" alt="Pebble and Shells" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/StickSea.jpg" alt="Stick and Sea" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/SeaweedGasmask.jpg" alt="Seaweed Gasmask" /></div>
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Surfers.jpg" alt="Surfers" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Surfers.jpg" alt="Surfers" /></div>!-->
+      {%for event in recommended_campaigns%}
+  {{imglink = event['img_link']}}
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p> {{event['event_name']}}</p></div><img src= "imglink" /></div>
+    {%endfor%}
     </div>
     <div id="caption">Photo Caption</div>
     <div id="loading">Please wait...</div>
@@ -717,11 +757,10 @@ function fadeOutLoadingMessage(){
 <script>
 function changeLocation(){
     $('p').each(function(i){
-        document.getElementById('p').innerHTML = "hehe";
+        this.replaceWith('haha');
     });
 }
 
-document.getElementById('#div1').innerHTML = "hehe";
 changeLocation();
 </script>
 
