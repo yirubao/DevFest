@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+
+       body {
+    margin: auto;
+    width: 60%;
+    border: 8px solid grey;
+    padding: 10px;
+    
+    
+}
+    </style>
+  </head>
+  <body>
+    <h2 align="center"><font size="8" face="verdana" color="black">Event Name</h2>
+    <p align="center"><font size="5" face="verdana" color="black">Event Date</p>
+    <p align="center"><font size="5" face="verdana" color="black">Event Type</p>
+    <h2 align="center"><font size="6" face="verdana" color="black">Event Description</h2>
+    <p align="center"><font size="3" face="verdana" color="black">blablablabla</p>
+    
+    <div align="center">
+
+      <img  src="download.jpeg" alt="image of the event" >
+    
+    </div>
+  
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANXMr6O8g1p5MBCV0kA1Hhe2vy-xVz3cw&callback=initMap">
+    </script>
+  </body>
+</html>
