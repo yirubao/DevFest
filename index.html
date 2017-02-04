@@ -52,97 +52,7 @@
 
     <center><h2>Organizing near you.</h2></center>
 
-   
-   <div align="center">
-    <form class="form-wrapper">
-    <input type="text" id="search" placeholder="Search For Campaigns Near You" required>
-    <input type="submit" value="go" id="submit">
-    </form>
-
-<style>
-.form-wrapper {
-    position:absolute;
-    top:200;
-    right:420;
-    width: 450px;
-    padding: 8px;
-    overflow: hidden;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #dedede #bababa #aaa #bababa;
-    box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-    border-radius: 10px;    
-    background-color: #f6f6f6;
-    background-image: linear-gradient(top, #f6f6f6, #eae8e8);
-}
-
-.form-wrapper #search {
-    width: 330px;
-    height: 15px;
-    padding: 10px 5px;
-    float: left;    
-    font: bold 16px 'lucida sans', 'trebuchet MS', 'Tahoma';
-    border: 1px solid #ccc;
-    box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;
-    border-radius: 3px;      
-}
-
-.form-wrapper #search:focus {
-    outline: 0; 
-    border-color: #aaa;
-    box-shadow: 0 1px 1px #bbb inset;  
-}
-
-.form-wrapper #search::-webkit-input-placeholder {
-   color: #999;
-   font-weight: normal;
-}
-
-.form-wrapper #search:-moz-placeholder {
-    color: #999;
-    font-weight: normal;
-}
-
-.form-wrapper #search:-ms-input-placeholder {
-    color: #999;
-    font-weight: normal;
-} 
-
-.form-wrapper #submit {
-    float: right;    
-    border: 1px solid #00748f;
-    height: 20px;
-    width: 100px;
-    padding: 0;
-    cursor: pointer;
-    font: bold 15px Arial, Helvetica;
-    color: #fafafa;
-    text-transform: uppercase;    
-    background-color: #0483a0;
-    background-image: linear-gradient(top, #31b2c3, #0483a0);
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;      
-    text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
-}
-  
-.form-wrapper #submit:hover,
-.form-wrapper #submit:focus {       
-    background-color: #31b2c3;
-    background-image: linear-gradient(top, #0483a0, #31b2c3);
-}   
-  
-.form-wrapper #submit:active {
-    outline: 0;    
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;    
-}
-  
-.form-wrapper #submit::-moz-focus-inner {
-    border: 0;
-}
-</style>
-</div>
+    </script>
 
 
 <!--Meredith's Stuff !-->
@@ -190,6 +100,7 @@ h2{
 }
 
 #galleryContainer {
+  overflow:hidden;
   width: 80%;
   height: 45%;        /* Image height + 200px */
   position: absolute;
@@ -427,16 +338,33 @@ h2{
   display:none;
   position:fixed;
   color:black;
-  left:120px;
+  left:140px;
   font-size:40px;
   top:90%;
-  left:47%;
+  left:43%;
 
+}
+#div2{
+  display:none;
+  position:fixed;
+  color:black;
+  left:140px;
+  font-size:40px;
+  top:90%;
+  left:43%;
+}
+#div3{
+  display:none;
+  position:fixed;
+  color:black;
+  left:140px;
+  font-size:40px;
+  top:90%;
+  left:43%;
 }
 
 p{
     text-align: center;
-    position:absolute;
     top:70%;
     font-family: 'Roboto', sans-serif;
 }
@@ -817,41 +745,130 @@ xmlhttp.send();
 
 </script>
 
+<div align="center">
+    <form class="form-wrapper">
+    <input type="text" id="search" placeholder="Search For Campaigns Near You" required>
+    <input type="submit" value="go" id="submit">
+    </form>
 
+<style>
+.form-wrapper {
+    position:absolute;
+    top:800;
+    right:500;
+    width: 450px;
+    padding: 8px;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #dedede #bababa #aaa #bababa;
+    box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+    border-radius: 10px;    
+    background-color: #f6f6f6;
+    background-image: linear-gradient(top, #f6f6f6, #eae8e8);
+}
+.form-wrapper #search {
+    width: 330px;
+    height: 15px;
+    padding: 10px 5px;
+    float: left;    
+    font: bold 16px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;
+    border-radius: 3px;      
+}
+.form-wrapper #search:focus {
+    outline: 0; 
+    border-color: #aaa;
+    box-shadow: 0 1px 1px #bbb inset;  
+}
+.form-wrapper #search::-webkit-input-placeholder {
+   color: #999;
+   font-weight: normal;
+}
+.form-wrapper #search:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+}
+.form-wrapper #search:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+} 
+.form-wrapper #submit {
+    float: right;    
+    border: 1px solid #00748f;
+    height: 20px;
+    width: 100px;
+    padding: 0;
+    cursor: pointer;
+    font: bold 15px Arial, Helvetica;
+    color: #fafafa;
+    text-transform: uppercase;    
+    background-color: #0483a0;
+    background-image: linear-gradient(top, #31b2c3, #0483a0);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;      
+    text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+}
+  
+.form-wrapper #submit:hover,
+.form-wrapper #submit:focus {       
+    background-color: #31b2c3;
+    background-image: linear-gradient(top, #0483a0, #31b2c3);
+}   
+  
+.form-wrapper #submit:active {
+    outline: 0;    
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;    
+}
+  
+.form-wrapper #submit::-moz-focus-inner {
+    border: 0;
+}
+</style>
+</div>
 
   <button id="login-button" onclick='checkLoginState()'></button>
   <button id="leftButton" onclick='moveLeft()'>&lt;</button>
   <button id="rightButton" onclick='moveRight()'>&gt;</button>
   <div id="galleryContainer">
     <div id="gallery">
-    <!--
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p>Location</p></div><img src="slides/BarbedWire.jpg" alt="Barbed Wire" /></div>
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Feather.jpg" alt="Feather" /></div>
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/DriftStuff.jpg" alt="Drift Stuff" /></div>
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Driftwood.jpg" alt="Driftwood" /></div>
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/DriftwoodGuy.jpg" alt="Driftwood and Guy" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p>Washington Square Park</p></div><img src="img/p1.jpg" alt="Barbed Wire" /></div>
+      <div onmouseover="document.getElementById('div2').style.display = 'block';" onmouseout="document.getElementById('div2').style.display = 'none';"><div id = "div2"><p>26 Bleeker St</p></div><a href = "campaign.html"><img src="img/p2.jpg" alt="Feather" /></a></div>
+      <div onmouseover="document.getElementById('div3').style.display = 'block';" onmouseout="document.getElementById('div3').style.display = 'none';"><div id = "div3"><p>711 12th Avenue</p></div><a href = "campaign2.html"><img src="img/p3.jpg" alt="Drift Stuff" /></a></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p>94 Avenue A</div><img src="img/p4.jpg" alt="Driftwood" /></div>
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p>Union Square</p></div><img src="img/p5.jpg" alt="Driftwood and Guy" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/GrassLight.jpg" alt="Grass and Light" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/PebbleAndShells.jpg" alt="Pebble and Shells" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/StickSea.jpg" alt="Stick and Sea" /></div>
       <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/SeaweedGasmask.jpg" alt="Seaweed Gasmask" /></div>
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Surfers.jpg" alt="Surfers" /></div>!-->
-      {%for event in recommended_campaigns%}
-  {{imglink = event['img_link']}}
-      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p> {{event['event_name']}}</p></div><img src= "imglink" /></div>
-    {%endfor%}
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getElementById('div1').style.display = 'none';"><div id = "div1"><p></p></div><img src="slides/Surfers.jpg" alt="Surfers" /></div>!
+      
+
+      <!--{%for event in recommended_campaigns%}
+  {{imglink = event['img_link']}} -->
+      <div onmouseover="document.getElementById('div1').style.display = 'block';" onmouseout="document.getementById('div1').style.display = 'none';"><div id = "div1"><p> {{event['event_name']}}</p></div><img src= "imglink" /></div>
+    <!--{%endfor%}!-->
     </div>
     <div id="caption">Photo Caption</div>
     <div id="loading">Please wait...</div>
   </div>
 
-<script>
+<!--<script>
+locations = ["Columbia University", "26 Bleeker St", "12th Avenue, New York, NY", "94 Avenue A", "Union Sq W"]
+
+count = 0;
+
 function changeLocation(){
     $('p').each(function(i){
-        this.replaceWith('haha');
+        this.replaceWith(locations[count]);
+        count++;
     });
 }
 
-changeLocation();
+changeLocation();!-->
 </script>
 
 </body>

@@ -73,16 +73,16 @@ a:hover{
 #table1{
 	font-family: 'Roboto', sans-serif;
 	font-size: 3em;
-	border-style:solid;
-	border-width:.2em;
+	/*border-style:solid;*/
+	/*border-width:.2em;*/
 	padding: .5em;
 	width:23em;
-	height:5em;
-	padding:.2em;
+	height:20em;
 }
 
 #tabledescription{
 	font-size:2em;
+
 }
 
 #tablepicture{
@@ -110,6 +110,10 @@ h1{
 <script type="text/javascript" src="jquery.jswipe-0.1.2.js"></script>
 <script type="text/javascript">
 
+
+
+/* MYLIST IS WHERE THE REAL DATA WILL GO */
+
 myList = ['haha','hehe','hoho','uhkjhk'];
 
 function appendText() {
@@ -118,6 +122,8 @@ function appendText() {
 		 $("#table1").append(txt1);
 	}
 }
+
+appendText();
 
 </script>
 </body>
