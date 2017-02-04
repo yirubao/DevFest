@@ -1,0 +1,123 @@
+</html>
+<html lang="en">
+
+<head>
+
+	 <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Biryani:800|Playfair+Display:900|Roboto:300" rel="stylesheet">
+
+    <title>Search Results</title>
+</head>
+
+<body>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Advanced Search</a>
+                    </li>
+                    <li>
+                        <a href="about.html">Log In</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+<center><a href = "index.html"><h1>Campaigns to <span id = "act">Act</span> On</h1></center></a>
+<br><br>
+<center>
+
+<!--contains the table!-->
+	<table id= "table1">
+		<tr>
+			<td><div id="tablepicture"><img src="http://www.telegraph.co.uk/content/dam/news/2017/01/30/JS119241727_Getty-Images-North-America_BESTPIX-Demonstrators-Protest-At-The-White-House-Against-Mu-xxlarge_trans_NvBQzQNjv4Bq4_x9TRKg1d1-zB4NNX8ejoF0NOGFCSKNH5ZW1UQlQ5A.jpg"/></div></td>
+			<div id="tabledescription"><td><b>title</b><br>location<br>description</td></div>
+		</tr>
+
+		<tr>
+			<td><div id="tablepicture"><img src="http://i2.cdn.cnn.com/cnnnext/dam/assets/161109211059-03-trump-protest-1109-super-169.jpg"/></div></td>
+			<div id="tabledescription"><td><b>title</b><br>location<br>description</td></div>
+		</tr>
+
+		<tr>
+			<td><div id="tablepicture"><img src="http://i2.cdn.cnn.com/cnnnext/dam/assets/161109211059-03-trump-protest-1109-super-169.jpg"/></div></td>
+			<div id="tabledescription"><td><b>title</b><br>location<br>description</td></div>
+		</tr>
+	</table>
+
+
+</center>
+
+<style>
+
+a {
+	color:black;
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:none;
+	color:black;
+}
+
+#table1{
+	font-family: 'Roboto', sans-serif;
+	font-size: 3em;
+	border-style:solid;
+	border-width:.2em;
+	padding: .5em;
+	width:23em;
+	height:5em;
+	padding:.2em;
+}
+
+#tabledescription{
+	font-size:2em;
+}
+
+#tablepicture{
+	height:5em;
+	width:5em;
+	overflow:hidden;
+	padding:.5em;
+}
+
+h1{
+	font-size:100px;
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+}
+
+#act{
+     font-family: 'Biryani', sans-serif;
+     color:#ff4d4d;
+}
+
+</style>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.jswipe-0.1.2.js"></script>
+<script type="text/javascript">
+
+myList = ['haha','hehe','hoho','uhkjhk'];
+
+function appendText() {
+	for(element in myList){
+		var txt1 = "<tr><td><div id=\"tablepicture\"><img src=\"http://i2.cdn.cnn.com/cnnnext/dam/assets/161109211059-03-trump-protest-1109-super-169.jpg\"/></div></td><div id=\"tabledescription\"><td><b>title</b><br>location<br>description</td></div></tr>";
+		 $("#table1").append(txt1);
+	}
+}
+
+</script>
+</body>
