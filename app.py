@@ -5,8 +5,10 @@ from pymongo import MongoClient
 from flask_mongoengine import MongoEngine
 from flask_mongoengine.wtf import model_form
 from wtforms import PasswordField
-import socket
-import requests
+import socket, json
+import requests, facebook
+
+access_token="EAACEdEose0cBANiSrapirpDaDdNFY5wfIPkFTkHLl2FhoVpZBcGcUqVcMA5XSCj6mZBygdZAqQwbiHVNCiVeDC4mZASiwxLXFtPSBQmwXF7mBsofXyENZBfcc52MSz6aoNyylIEIs1LRpUERAu0SBJ8WisTw3KmTZBeZAIdC19X6tGQihh5OZAHfQFVdgidZCxZAwZD"
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -17,23 +19,17 @@ app.config['WTF_CSRF_ENABLED'] = True
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-s=socket.socket()
-host=socket.gethostname()
-port = 12345
-s.bind((host,port))
-s.listen(4)
-user_access_token = s.recv(123)
-s.close
+
 
 def connect():
     client = MongoClient("ds056789.mlab.com", 56789)
-    db = connection["nyact_db"]
+    db = client["nyact_db"]
     db.authenticate("nyact_db", "ny@ct1vist")
-    return temp_handle
+    return db
 
 handle=connect()
 campaigns_db = handle.nyact_db.campaigns_db
-users_db= nyact_db.handle.users_db
+users_db= handle.nyact_db.handle.users_db
 
 class User:
 
@@ -51,32 +47,32 @@ class User:
     def get_id(self):
         return self.username
 
-    def add_campaigns_bylatlong(lat, long, radius, event_query, type): #radius in meters
-        if(lat is None or long is None or radius is None):
-            payload={'q':event_query, 'type': type}
-            results = requests.get("http://graph.facebook.com/search?", params=payload)
-        else:
-            latlong = "%s%s%s" %(lat, ",", long)
-            payload = {'q': event_query, 'type': type, 'center': latlong,'distance':radius }
-            results = requests.get("http://graph.facebook.com/search?", params=payload)
-            results.json()
-            json_results = json.load(results)
-            for(num in range(0,9)):
-                for(e[num] in results):
-            campaigns_db.insert_one({'event_name': event_name,'date': date, 'location': location, 'type': type, 'event_desc': event_description,'img_link': img})
+def add_campaigns_bylatlong(lat, long, radius, event_query, type): #radius in meters
+    if(lat is None or long is None or radius is None):
+        payload={'q':event_query, 'type': type, 'access_token': access_token}
+        results = requests.get("https://graph.facebook.com/search?", params=payload)
+    else:
+        latlong = "%s%s%s" %(lat, ",", long)
+        payload = {'q': event_query, 'type': type, 'center': latlong,'distance':radius, 'access_token':access_token}
+        results = requests.get("https://graph.facebook.com/search?", params=payload).json()
+        print results
+    for field in results['data']:
+        campaigns_db.insert_one({'event_name': field.get('name'),'date':field.get('start_time'), 'location': field.get('location'), 'event_desc':  field.get('description')})
 
+    #return json_results
 @app.route("/")
 def homepage():
-    recommended_campaigns=[10]
+    recommended_campaigns=[]
     #FUNCTION TO POPULATE CAMPAIGNS_DB!!!
-    populate_campaigns_db()
-    campaigns_db
-    return render_template("index.html")
+    recommended_campaigns= add_campaigns_bylatlong(40.8075, -73.9626, 4000, "protest", "event")
+    #print len(recommended_campaigns)
+    return render_template("index.html", recommended_campaigns=recommended_campaigns)
 
 @login_manager.user_loader
 def load_user(name):
-    users = db_user.find_one({"username": name})
+    users = users_db.find_one({"username": name})
     if len(users) != 0:
+        add_campaigns_bylatlong(40.8075, -73.9626, 4000, "protest", "event")
         return User(users['username'])
     else:
         return None
@@ -91,6 +87,7 @@ def signup():
             interest_str = request.form.get('interests', None)
             interests = []
             interests = interest_str.split()
+
         except:
             return False
         if users_db.find_one({'username': username}) is None:
@@ -102,12 +99,13 @@ def signup():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST'
+    if request.method == 'POST':
         username = request.form.get('username', None)
         password = request.form.get('password', None)
         if user is None:
             return redirect("/login")
         elif user["password"] == password:
+
             return redirect("/")
         else:
             return redirect("/login")
@@ -153,3 +151,5 @@ def search(search_id, filter):
 
 
 
+if __name__ == "__main__":
+    app.run()
